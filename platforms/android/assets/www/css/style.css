@@ -1,0 +1,16 @@
+.heading{
+	text-align: center;
+	color: #68CBE0;
+}
+
+.send {
+	padding-left: 16px;
+}
+
+.banner-img{
+	background: url('../img/screen.png');
+	height: 256px;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+}
