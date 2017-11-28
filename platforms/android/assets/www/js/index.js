@@ -97,10 +97,10 @@
     },
 
     geolocation: function () {
-        navigator.geolocation.getCurrentPosition(app.onWeatherSuccess, app.onWeatherError, { enableHighAccuracy: true });
+         navigator.geolocation.getCurrentPosition(app.onSuccess, app.onError);
          // Success callback for get geo coordinates
      },
-     onWeatherSuccess: function (position) {
+     onSuccess: function (position) {
 
             Latitude = position.coords.latitude;
             Longitude = position.coords.longitude;
@@ -119,29 +119,28 @@
               'http://api.openweathermap.org/data/2.5/weather?lat='
               + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=imperial';
 
-           
-
-              
-
+        
                     $.getJSON(queryString, function (results) {
                         
-                        if (results.weather.length) {
-                            alert("City:" +results.name +" "+ 'longitude:' +results.coord.lon +" "+ 'latitude:'+results.coord.lat)
-                            
+                        // if (results.weather.length) {
+                            // alert("City:" +results.name +" "+ 'longitude:' +results.coord.lon +" "+ 'latitude:'+results.coord.lat)
+                            // var locDiv = document.getElementById(location')
+                            var loc = document.getElementById('location').innerHTML = "City:" +results.name +" "+ 'longitude:' +results.coord.lon +" "+ 'latitude:'+results.coord.lat;
+                            // locDiv.appendChild(loc);
 
-                        }
+                        // }
 
                     })
                 
-           .fail(function () {
-                console.log("error getting location");
+           .fail(function (error) {
+                alert('error')
             });
         }
     },
 
         // Error callback
 
-        onWeatherError: function(error) {
+        onError: function(error) {
             console.log('code: ' + error.code + '\n' + 'me')  
         }
     
